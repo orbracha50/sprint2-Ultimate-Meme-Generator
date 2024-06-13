@@ -4,34 +4,32 @@ var gCtx
 function onInIt() {
     renderMeme()
 }
-function renderMeme(text) {
+function renderMeme() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
+    gCtx.font = "50px Arial";
+    gCtx.fillStyle = 'white'
     const meme = getMeme(1)
-    meme.lines[0].txt = text
     const img = gImgs.find(img => img.id === meme.selectedImgId)
     const elImg = document.querySelector('.meme-img')
     elImg.src = img.url
     elImg.onload = () => {
-        drawImage(elImg,text)
+        drawImage(elImg)
     }
-    gCtx.font = "50px Arial";
-    gCtx.fillStyle = 'white'
-    if (text) {
-        gCtx.fillText(text, 170, 80)
-    }
-
-    /* elImg.src = ImgUrl */
-
-
 }
 
-function drawImage(elImg,text) {
+function drawImage(elImg) {
     console.log(elImg)
     gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
     gCtx.font = "50px Arial";
     gCtx.fillStyle = 'white'
+    setLineTxt()
+}
+
+function setLineTxt(text) {
     if (text) {
-        gCtx.fillText(text, 170, 80)
+        gMeme.lines[0].txt = text
+        gCtx.fillText(text, 150, 70)
+        /* renderMeme() */
     }
 }
