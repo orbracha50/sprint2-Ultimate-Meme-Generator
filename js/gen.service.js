@@ -3,11 +3,27 @@ var gImgId = 1
 var gImgs = []
 _createImg('images/meme-imgs (square)/1.jpg')
 
-function _createImg(imgUrl,keywords){
+var gMeme = {
+    selectedImgId: 0,
+    selectedLineIdx: 0,
+    lines: [
+        {
+            txt: '',
+            size: 20,
+            color: 'white'
+        }
+    ]
+}
+
+function getMeme(imgId){
+    gMeme.selectedImgId = imgId
+    return gMeme
+}
+function _createImg(imgUrl, keywords) {
     let img = {
         id: gImgId++,
         url: imgUrl,
-        keywords 
+        keywords
     }
     gImgs.push(img)
 }
