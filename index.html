@@ -6,20 +6,20 @@
 </head>
 
 <body onload="onInIt()">
-    <header class="header-container">
+    <header class="header-container" >
         <img src="logo/LOGO.png" alt="">
         <nav class="nav">
-            <li>Home</li> |
-            <li>Meme Generator</li>
+            <li onclick="homePageShow()">Home</li> |
+            <li onclick="memePageShow()">Meme Generator</li>
         </nav>
     </header>
-    <section class="gallery-container">
+    <div class="main-gallery" hidden>
+        <section class="gallery-container" >
+        </section>
+    </div>
 
 
-    </section>
-
-
-    <section class="editor-container">
+    <section class="editor-container" >
         <div style="display:none;">
             <img class="meme-img" src="" />
         </div>
@@ -33,6 +33,7 @@
 
     </footer>
     <script src="js/gen.service.js"></script>
+    <script src="js/gal.controller.js"></script>
     <script src="js/gen.controller.js"></script>
 </body>
 

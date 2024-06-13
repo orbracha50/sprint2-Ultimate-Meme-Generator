@@ -20,4 +20,8 @@
     margin-right: 20px;
     width: max-content;
     font-size: 20px;
+    cursor: pointer;
+}
+li:hover{
+    font-weight: bold;
 }

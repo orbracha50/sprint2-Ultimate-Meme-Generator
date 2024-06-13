@@ -1,0 +1,18 @@
+.main-gallery{
+    opacity: 1;
+    display: grid;
+    margin-top: 20px;
+    width: 100%;
+    grid-template-columns: minmax(20px,1fr) minmax(auto,980px) minmax(20px,1fr);
+}
+.gallery-container{
+    grid-column: 2;
+    position: relative;
+    
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: 20px;
+}
+.gallery-container img{
+    width: 100%;
+}

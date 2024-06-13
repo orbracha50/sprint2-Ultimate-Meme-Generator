@@ -2,14 +2,15 @@
 var gElCanvas
 var gCtx
 function onInIt() {
-    renderMeme()
+    renderGallery()
+    /* renderMeme() */
 }
 function renderMeme() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
     gCtx.font = "50px Arial";
     gCtx.fillStyle = 'white'
-    const meme = getMeme(1)
+    const meme = getMeme()
     const img = gImgs.find(img => img.id === meme.selectedImgId)
     const elImg = document.querySelector('.meme-img')
     elImg.src = img.url
@@ -30,6 +31,5 @@ function setLineTxt(text) {
     if (text) {
         gMeme.lines[0].txt = text
         gCtx.fillText(text, 150, 70)
-        /* renderMeme() */
     }
 }

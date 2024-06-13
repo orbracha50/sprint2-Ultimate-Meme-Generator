@@ -1,7 +1,6 @@
 'use strict'
 var gImgId = 1
 var gImgs = []
-_createImg('images/meme-imgs (square)/1.jpg')
 
 var gMeme = {
     selectedImgId: 0,
@@ -15,8 +14,10 @@ var gMeme = {
     ]
 }
 
-function getMeme(imgId){
-    gMeme.selectedImgId = imgId
+function setImg(imgUrl){
+    gMeme.selectedImgId = _createImg(imgUrl)
+}
+function getMeme(){
     return gMeme
 }
 function _createImg(imgUrl, keywords) {
@@ -26,4 +27,5 @@ function _createImg(imgUrl, keywords) {
         keywords
     }
     gImgs.push(img)
+    return img.id
 }
