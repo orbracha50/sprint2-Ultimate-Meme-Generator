@@ -2,12 +2,16 @@
 
 <head>
     <title>Ultimate Meme Generator</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 
-<body>
+<body onload="onInIt()">
     <header class="header-container">
-
+        <img src="logo/LOGO.png" alt="">
+        <nav class="nav">
+            <li>Home</li> |
+            <li>Meme Generator</li>
+        </nav>
     </header>
     <section class="gallery-container">
 
@@ -16,9 +20,11 @@
 
 
     <section class="editor-container">
-
-
-
+        <div style="display:none;">
+            <img class="meme-img" src="images/meme-imgs (square)/1.jpg" />
+        </div>
+        <input class="canvas-text" type="text" placeholder="write something..." onchange="renderMeme(this.value)">
+        <canvas width="450" height="450"></canvas>
     </section>
 
 
@@ -26,7 +32,8 @@
 
 
     </footer>
-    <script src="main.js"></script>
+    <script src="js/gen.service.js"></script>
+    <script src="js/gen.controller.js"></script>
 </body>
 
 </html>
