@@ -1,0 +1,38 @@
+@media (max-width : 900px) {
+    .gallery-container img{
+        width: 25vw;
+    }
+    .editor-container {
+        grid-column: 2;
+        display: grid;
+        grid-template-columns: max-content;
+        place-items: center;
+        width: max-content;
+        gap: 20px;
+        margin-bottom: 10px;
+    }
+}
+@media (max-width:620px ) {
+    .gallery-container p{
+        font-size: 40px;
+    }
+}
+
+@media (max-width:530px ) {
+    .gallery-container {
+        display: grid;
+        grid-template-columns: auto auto;
+        font-size: 40px;
+    }
+    .gallery-container img{
+        width: 130px;
+    }
+    .nav{
+        font-size: 18px;
+        gap: 1px;
+    }
+    ul{
+        gap: 3px;
+    }
+
+}

@@ -16,9 +16,12 @@
     grid-column-gap: 20px;
     gap: 30px;
 }
+.gallery-container p{
+    font-size: 70px;
+}
 .gallery-container img{
-    width: 250px;
-    height: 250px;
+    width: 230px;
+    height: max-content;
 }
 .gallery-pages-button{
     position: absolute;
@@ -27,7 +30,7 @@
     translate: -50% -50%;
     display: flex;
     justify-content: space-between;
-    width: 900px;
+    width: 90%;
     
 }
 .gallery-pages-button button{

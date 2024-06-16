@@ -5,10 +5,7 @@ var gPreCtx
 var gSelectedLine = 0
 var gArrow0 = 70
 var gArrow1 = 370
-function onInIt() {
-    renderGallery()
-    /* renderMeme() */
-}
+var gSavedMemes 
 
 function renderMeme() {
     gElCanvas = document.querySelector('canvas')
@@ -18,7 +15,7 @@ function renderMeme() {
     const meme = getMeme()
     console.log(meme.selectedImgId)
     const elImg = document.getElementById(`${meme.selectedImgId}`)
-        drawImage(elImg)
+    drawImage(elImg)
 }
 function addLine() {
 
@@ -86,6 +83,11 @@ function strokeborder(line) {
     console.log(gMeme.lines[line].pos)
 }
 
+function saveMeme() {
+    gSavedMemes.push([gElCanvas.toDataURL('image/jpeg')])
+    
+    saveToStorage('savedMemes', gSavedMemes)
+}
 function downloadImg(elLink) {
     const imgContent = gElCanvas.toDataURL('image/jpeg') // image/jpeg the default format
     elLink.href = imgContent
@@ -126,12 +128,55 @@ function setFont(line) {
 
 }
 
-function clearBtn(line){
+function clearBtn(line) {
     const text = document.querySelector(`.canvas-text${line}`)
     text.value = ''
     gMeme.lines[line].txt = 0
     setLineTxt(line)
 }
+
+function onUploadImg() {
+    // Gets the image from the canvas
+    const imgDataUrl = gElCanvas.toDataURL('image/jpeg')
+
+    function onSuccess(uploadedImgUrl) {
+        // Handle some special characters
+        const url = encodeURIComponent(uploadedImgUrl)
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&t=${url}`)
+    }https://github.com/orbracha50/sprint2-Ultimate-Meme-Generator/branches
+
+    // Send the image to the server
+    doUploadImg(imgDataUrl, onSuccess)
+}
+
+function doUploadImg(imgDataUrl, onSuccess) {
+    // Pack the image for delivery
+    const formData = new FormData()
+    formData.append('img', imgDataUrl)
+
+    // Send a post req with the image to the server
+    const XHR = new XMLHttpRequest()
+    XHR.onreadystatechange = () => {
+        // If the request is not done, we have no business here yet, so return
+        if (XHR.readyState !== XMLHttpRequest.DONE) return
+        // if the response is not ok, show an error
+        if (XHR.status !== 200) return console.error('Error uploading image')
+        const { responseText: url } = XHR
+        // Same as
+        // const url = XHR.responseText
+
+        // If the response is ok, call the onSuccess callback function, 
+        // that will create the link to facebook using the url we got
+        console.log('Got back live url:', url)
+        onSuccess(url)
+    }
+    XHR.onerror = (req, ev) => {
+        console.error('Error connecting to server with request:', req, '\nGot response data:', ev)
+    }
+    XHR.open('POST', '//ca-upload.com/here/upload.php')
+    XHR.send(formData)
+}
+
 const canvas = document.querySelector('canvas')
 canvas.addEventListener('mousedown', function (e) {
     getCursorPosition(canvas, e)

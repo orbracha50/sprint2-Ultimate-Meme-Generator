@@ -9,16 +9,20 @@
     <header class="header-container">
         <img src="logo/LOGO.png" alt="">
         <nav class="nav">
-            <li onclick="homePageShow()">Home</li> |
-            <li onclick="memePageShow()">Meme Generator</li>
+            <ul>
+                <li onclick="homePageShow()">Home</li> |
+                <li onclick="memePageShow()">Meme Generator</li> |
+                <li onclick="savedMemeShow()">Saved Memes</li>
+            </ul>
         </nav>
     </header>
     <div class="main-gallery" style="display: block;">
         <section class="gallery-container">
         </section>
         <div class="gallery-pages-button">
-            <button onclick="prePage()" >⬅ Previous page</button>
-            <button onclick="nextPage()" >Next page ➡</button>
+            <button onclick="prePage()">⬅ Previous page</button>
+            <button onclick="nextPage()">Next page ➡</button>
+
         </div>
     </div>
 
@@ -50,6 +54,8 @@
                         <label for="font-size">font-size:</label>
                         <input name="font-size" class="btn" type="range" min="10" max="70"
                             onchange="setFontSize(this.value,0)" value="26">
+
+
                     </div>
 
                 </div>
@@ -75,7 +81,13 @@
                             onchange="setFontSize(this.value,1)" value="26">
                     </div>
                 </div>
-                <a href="#" class="btn download" onclick="downloadImg(this)" download="my-img.jpg">Download</a>
+                <div>
+                    <button class="btn download" onclick="saveMeme()"> save</button>
+                    <a href="#" class="btn download " onclick="downloadImg(this)" download="my-img.jpg">Download</a>
+                    <button class="btn" onclick="onUploadImg()">
+                        Share
+                    </button>
+                </div>
 
             </div>
         </section>

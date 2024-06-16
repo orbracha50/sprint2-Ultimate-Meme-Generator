@@ -2,7 +2,7 @@
 var gImgId = 1
 var gImgs = []
 _createImgs()
-console.log(gImgs)
+
 var gMeme = {
     selectedImgId: 0,
     selectedLineIdx: 0,

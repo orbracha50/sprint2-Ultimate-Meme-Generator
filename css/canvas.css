@@ -29,17 +29,16 @@ canvas {
 
 .buttons {
     display: grid;
-
+    grid-template-columns: auto;
     height: max-content;
     width: max-content;
     background-color: gray;
-    padding: 5px;
+    padding: 10px;
     border: 3px solid orange;
     border-radius: 10px;
 }
 
 .btn {
-    /* width: minmax(max-content,30px); */
     height: 30px;
     background-color: orange;
     border: 1px solid black;
@@ -49,6 +48,7 @@ canvas {
     text-decoration: none;
     color: white;
 }
+
 
 .download:hover {
     font-weight: bold;
