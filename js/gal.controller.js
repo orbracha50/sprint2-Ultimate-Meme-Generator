@@ -1,30 +1,58 @@
 'use strict'
-
+var gGalleryPage = 1
 function renderGallery() {
     const elGallery = document.querySelector('.gallery-container')
-    elGallery.innerHTML += `<img onclick="onImgSelect(this)" src="images/meme-imgs (square)/2.jpg" alt="">`
-    elGallery.innerHTML += `<img onclick="onImgSelect(this)" src="images/meme-imgs (square)/3.jpg" alt="">`
-    const elmGallery = document.querySelector('.main-gallery')
-}
-function onImgSelect(elImg){
-    const elGallery = document.querySelector('.main-gallery')
-    const elGenerator = document.querySelector('.editor-container')
-    memePageShow()
-    /* elGallery.hidden */
-    const imgUrl = elImg.src
-    setImg(imgUrl)
-    renderMeme()
-}
-function homePageShow(){
-    const elGallery = document.querySelector('.main-gallery')
-    const elGenerator = document.querySelector('.editor-container')
-    elGallery.style.opacity = 1
-    elGenerator.style.opacity= 0
+    if (gGalleryPage === 1) {
+        elGallery.innerHTML = ''
+        for (var i = 0; i < 9; i++) {
+
+            elGallery.innerHTML +=
+                `<img onclick="onImgSelect(this)" src="${gImgs[i].url}" alt="" id="${gImgs[i].id}">`
+        }
+    }
+    if (gGalleryPage === 2) {
+        elGallery.innerHTML = ''
+        for (var i = 9; i < 18; i++) {
+
+            elGallery.innerHTML +=
+                `<img onclick="onImgSelect(this)" src="${gImgs[i].url}" alt="" id="${gImgs[i].id}">`
+        }
+    }
+
 }
 
-function memePageShow(){
+function onImgSelect(elImg) {
+    memePageShow()
+    /* elGallery.hidden */
+    const imgId = elImg.id
+    console.log(imgId)
+    setImg(imgId)
+    renderMeme()
+}
+
+function homePageShow() {
     const elGallery = document.querySelector('.main-gallery')
-    const elGenerator = document.querySelector('.editor-container')
-    elGallery.style.opacity = 0
-    elGenerator.style.opacity= 1
+    const elGenerator = document.querySelector('.main-editor')
+    elGallery.style.display = 'block'
+    elGenerator.style.display = 'none'
+}
+
+function memePageShow() {
+    const elGallery = document.querySelector('.main-gallery')
+    const elGenerator = document.querySelector('.main-editor')
+    elGallery.style.display = 'none'
+    elGenerator.style.display = 'block'
+}
+function nextPage() {
+    if (gGalleryPage === 1) {
+        gGalleryPage = 2
+    } else{
+        gGalleryPage= 1
+    }
+    renderGallery()
+}
+function prePage() {
+    if (gGalleryPage === 1) gGalleryPage = 2
+    else gGalleryPage = 1
+    renderGallery()
 }

@@ -6,31 +6,96 @@
 </head>
 
 <body onload="onInIt()">
-    <header class="header-container" >
+    <header class="header-container">
         <img src="logo/LOGO.png" alt="">
         <nav class="nav">
             <li onclick="homePageShow()">Home</li> |
             <li onclick="memePageShow()">Meme Generator</li>
         </nav>
     </header>
-    <div class="main-gallery" hidden>
-        <section class="gallery-container" >
+    <div class="main-gallery" style="display: block;">
+        <section class="gallery-container">
         </section>
+        <div class="gallery-pages-button">
+            <button onclick="prePage()" >⬅ Previous page</button>
+            <button onclick="nextPage()" >Next page ➡</button>
+        </div>
     </div>
 
+    <div class="main-editor" style="display: none;">
+        <section class="editor-container">
+            <div class="canvas">
+                <canvas width="450" height="450"></canvas>
+                <div style="display:none;">
+                    <img class="meme-img" src="" />
+                </div>
 
-    <section class="editor-container" >
-        <div style="display:none;">
-            <img class="meme-img" src="" />
-        </div>
-        <input class="canvas-text" type="text" placeholder="write something..." onchange="setLineTxt(this.value)">
-        <canvas width="450" height="450"></canvas>
-    </section>
+            </div>
+            <div class="buttons">
+                <div class="text">
+                    <div>
+                        <label for="text">text:</label>
+                        <input onclick="strokeborder(0)" name="text" class="canvas-text0 btn" type="text" maxlength="24"
+                            placeholder="write something.." onchange="setLineTxt(0)">
+                        <button onclick="setLineTxt(0, -20)">🔼</button>
+                        <button onclick="setLineTxt(0, 20)">🔽</button>
+                        <button onclick="clearBtn(0)">clear</button>
+                    </div>
+                    <label for="color">Color:</label>
+                    <input name="color" class="btn line0" type="color" onchange="setColor(this.value,0)">
 
+                    <input class="font-famliy0" list="font-famliy" placeholder="font" onchange="setFont(0)">
+                    <input class="alignment0" list="alignment" placeholder="center" onchange="setLineTxt(0)">
+                    <div class="font-size">
+                        <label for="font-size">font-size:</label>
+                        <input name="font-size" class="btn" type="range" min="10" max="70"
+                            onchange="setFontSize(this.value,0)" value="26">
+                    </div>
 
+                </div>
+                <div class="text">
+                    <div>
+                        <label for="text">text:</label>
+                        <input onclick="strokeborder(1)" name="text" class="canvas-text1 btn" type="text"
+                            placeholder="write something.." onchange="setLineTxt(1)">
+                        <button onclick="setLineTxt(1, -20)">🔼</button>
+                        <button onclick="setLineTxt(1, 20)">🔽</button>
+                        <button onclick="clearBtn(1)">clear</button>
+                    </div>
+
+                    <label for="color">Color:</label>
+                    <input name="color" class="btn line1" type="color" onchange="setColor(this.value,1)">
+
+                    <input class="font-famliy1" list="font-famliy" placeholder="font" onchange="setFont(1)">
+                    <input class="alignment1" list="alignment" placeholder="center" onchange="setLineTxt(1)">
+
+                    <div class="font-size">
+                        <label for="font-size">font-size:</label>
+                        <input name="font-size" class=" btn" type="range" min="10" max="70"
+                            onchange="setFontSize(this.value,1)" value="26">
+                    </div>
+                </div>
+                <a href="#" class="btn download" onclick="downloadImg(this)" download="my-img.jpg">Download</a>
+
+            </div>
+        </section>
+    </div>
+    <datalist id="font-famliy">
+        <option value="Impact">
+        <option value="Arial">
+        <option value="Verdana ">
+        <option value="Tahoma ">
+        <option value="Times New Roman">
+        <option value="Georgia">
+    </datalist>
+    <datalist id="alignment">
+        <option value="center">
+        <option value="left">
+        <option value="right">
+    </datalist>
     <footer class="footer-container">
-
-
+        <img src="logo/LOGO.png" alt="">
+        <p>All rights reserved 2024</p>
     </footer>
     <script src="js/gen.service.js"></script>
     <script src="js/gal.controller.js"></script>

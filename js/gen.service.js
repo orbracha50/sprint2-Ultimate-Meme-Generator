@@ -1,31 +1,46 @@
 'use strict'
 var gImgId = 1
 var gImgs = []
-
+_createImgs()
+console.log(gImgs)
 var gMeme = {
     selectedImgId: 0,
     selectedLineIdx: 0,
     lines: [
         {
             txt: '',
-            size: 20,
-            color: 'white'
+            size: 26,
+            color: '',
+            pos: {},
+            font: 'Impact'
+        },
+        {
+            txt: '',
+            size: 26,
+            color: '',
+            pos: {},
+            font: 'Impact'
         }
     ]
 }
 
-function setImg(imgUrl){
-    gMeme.selectedImgId = _createImg(imgUrl)
+function setImg(imgId) {
+            gMeme.selectedImgId = imgId
+    console.log(gMeme.selectedImgId)
 }
-function getMeme(){
+function getMeme() {
     return gMeme
 }
 function _createImg(imgUrl, keywords) {
-    let img = {
+    var img = {
         id: gImgId++,
         url: imgUrl,
         keywords
     }
-    gImgs.push(img)
-    return img.id
+    return img
+}
+function _createImgs() {
+    for (var i = 1; i < 19; i++) {
+        gImgs.push(_createImg(`images/meme-imgs (square)/${i}.jpg` ))
+    }
 }

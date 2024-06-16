@@ -1,0 +1,23 @@
+.footer-container{
+    position: absolute;
+    bottom: 0;
+    height: 15vh;
+    width: 98%;
+    background-color: orange;
+
+}
+.footer-container img{
+    position: relative;
+    top: 40%;
+    left: 50%;
+    translate: -50% -50%;
+    width: 120px;
+    height: 30px;
+}
+.footer-container p{
+    position: relative;
+    top: 40%;
+    left: 50%;
+    translate: -50% -50%;
+    width: max-content;
+}
