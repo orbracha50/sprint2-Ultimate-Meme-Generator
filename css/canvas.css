@@ -49,11 +49,6 @@ canvas {
     color: white;
 }
 
-
-.download:hover {
-    font-weight: bold;
-}
-
 .color {
     display: inline-block;
 }
@@ -70,7 +65,8 @@ label {
 }
 
 .font-famliy0,
-.font-famliy1 {
+.font-famliy1,
+.alignment0,.alignment1 {
     width: 100px;
     border-radius: 5px;
 }
